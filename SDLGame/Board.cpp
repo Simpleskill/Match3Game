@@ -29,6 +29,12 @@ SDL_Texture* Board::loadTexture(const std::string& path)
 }
 
 void Board::Init(SDL_Renderer* myRenderer) {
+
+    //Initialize SDL_TTF
+    TTF_Init();
+    // Opens a font style and sets a size
+    Sans = TTF_OpenFont("../Assets/Sans.ttf", 40);
+
     // Initialization of Textures
     renderer = myRenderer;
     textures[0] = loadTexture("../Assets/Color-1.png");
@@ -36,6 +42,11 @@ void Board::Init(SDL_Renderer* myRenderer) {
     textures[2] = loadTexture("../Assets/Color-3.png");
     textures[3] = loadTexture("../Assets/Color-4.png");
     textures[4] = loadTexture("../Assets/Color-5.png");
+    texture_score = loadTexture("../Assets/WoodBoardScore.png");
+    texture_grid = loadTexture("../Assets/WoodBoardGrid2.png");
+    texture_hiddenLeafGrid = loadTexture("../Assets/HiddenLeafBoardGrid.png");
+    texture_gameLogo = loadTexture("../Assets/GameLogoJewelCrush.png");
+
     bg = loadTexture("../Assets/Backdrop13.jpg");
     // Initialization of Grid
     FirstInit();
@@ -43,9 +54,18 @@ void Board::Init(SDL_Renderer* myRenderer) {
 void Board::UpdateBoard(float deltaTime) {
     // Storing the delta time every frame to handle animations and delays
     DeltaTime = deltaTime;
-
+    
     // Draw Background
     DrawBackground();
+
+    // Draw Background
+    DrawGameLogo();
+
+    // Draw Score Background
+    DrawScoreBackground();
+
+    // Draw Score Background
+    DrawGridBackground();
 
     // Check if it is Interactive
     CheckInteractive();
@@ -74,6 +94,12 @@ void Board::UpdateBoard(float deltaTime) {
 
     // Draw the board
     DrawBoard();
+
+    // Draw Points
+    DrawPoints();
+
+    // Draw Leaf Detail
+    DrawHiddenLeafGridBackground();
 }
 
 void Board::DrawBoard() {
@@ -92,7 +118,7 @@ void Board::DrawBoard() {
 }
 
 void Board::CheckInteractive() {
-    // Whenever the board is changed, it forces a 1 second cooldown before going back to being interactive
+    // Whenever the board is changed, it forces a half second cooldown before going back to being interactive
     if (!IsBoardReady()) 
     {
         interactive = false;
@@ -101,7 +127,7 @@ void Board::CheckInteractive() {
     }
     if (!interactive) {
         readyTimer += DeltaTime;
-        if (readyTimer >= 1.0f) 
+        if (readyTimer >= 0.5f) 
         {
             readyTimer = 0;
             interactive = true;
@@ -160,6 +186,34 @@ void Board::DrawBackground()
     // Create a fullscreen rect with the background texture loaded
     SDL_Rect rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
     SDL_RenderCopy(renderer, bg, NULL, &rect);
+}
+
+void Board::DrawGameLogo()
+{
+    // Draw game logo top-right Corner
+    SDL_Rect rect = { SCREEN_WIDTH-180, 0, 180 , 180 };
+    SDL_RenderCopy(renderer, texture_gameLogo, NULL, &rect);
+}
+
+
+void Board::DrawScoreBackground()
+{
+    // Draw score background wood board
+    SDL_Rect rect = { SCREEN_WIDTH / 2 - 200, 25, 400, 70 };
+    SDL_RenderCopy(renderer, texture_score, NULL, &rect);
+}
+
+void Board::DrawGridBackground()
+{
+    // Draw grid background
+    SDL_Rect rect = { BOARD_LEFT_PADDING - TILE_SIZE -5, BOARD_UP_PADDING - TILE_SIZE -10, TILE_SIZE * 10 +15, TILE_SIZE * 10 +15 };
+    SDL_RenderCopy(renderer, texture_grid, NULL, &rect);
+}
+void Board::DrawHiddenLeafGridBackground()
+{
+    // Draw a leaf detail in the grid top-right corner
+    SDL_Rect rect = { BOARD_LEFT_PADDING - TILE_SIZE - 5, BOARD_UP_PADDING - TILE_SIZE - 10, TILE_SIZE * 10 + 15, TILE_SIZE * 10 + 15 };
+    SDL_RenderCopy(renderer, texture_hiddenLeafGrid, NULL, &rect);
 }
 
 void Board::RemoveDeadBlocks()
@@ -600,6 +654,34 @@ void Board::UpdateBlockOnDrag(SDL_Point mousePosition)
     }
 }
 
+void Board::DrawPoints() {
+
+    SDL_Color Black = { 0, 0, 0 };
+    SDL_Color White = { 255, 255, 255 };
+
+    string score_text = "score: " + std::to_string(points);
+
+
+    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, const_cast<char*>(score_text.c_str()), Black);
+
+    // Convert it into a texture
+    SDL_Texture* Message = SDL_CreateTextureFromSurface(renderer, surfaceMessage);
+
+    SDL_Rect Message_rect; //create a rect
+    Message_rect.x = SCREEN_WIDTH/2 - surfaceMessage->w/2;  //controls the rect's x coordinate 
+    Message_rect.y = 35; // controls the rect's y coordinte
+    Message_rect.w = surfaceMessage->w; // controls the width of the rect
+    Message_rect.h = surfaceMessage->h; // controls the height of the rect
+
+    SDL_RenderCopy(renderer, Message, NULL, &Message_rect);
+
+    // Don't forget to free your surface and texture
+    SDL_FreeSurface(surfaceMessage);
+    SDL_DestroyTexture(Message);
+}
+
+
+
 void Board::SetBlockOriginPos(Block* block) 
 {
     // Updates the position of a block to its original position
@@ -676,6 +758,7 @@ void Board::SetMatchPoint() {
                 // Set blocks to dead to disappear
                 for (int i = 0; i < count; ++i) {
                     grid[y][x + i].blockState = BlockState::Dead;
+                    points++;
                 }
             }
 
@@ -688,6 +771,7 @@ void Board::SetMatchPoint() {
                 // Set blocks to dead to disappear
                 for (int i = 0; i < count; ++i) {
                     grid[y+i][x].blockState = BlockState::Dead;
+                    points++;
                 }
             }
         }

@@ -2,6 +2,7 @@
 #include "Block.h"
 #include "SDL.h"
 #include "SDL_image.h"
+#include <SDL_ttf.h>
 #include <stdio.h>
 #include <iostream>
 #include <chrono>   
@@ -15,9 +16,14 @@ class Board {
 public:
 	void Init(SDL_Renderer* myRenderer);
 	SDL_Texture* loadTexture(const std::string& path);
+	bool loadFromRenderedText(std::string textureText, SDL_Color textColor);
 	void FirstInit();
 	void UpdateBoard(float deltaTime);
 	void DrawBoard();
+	void DrawScoreBackground();
+	void DrawGridBackground();
+	void DrawHiddenLeafGridBackground();
+	void DrawGameLogo();
 	void DrawBackground();
 	void RemoveDeadBlocks();
 	void MoveBlocks();
@@ -40,19 +46,26 @@ public:
 	string GetColorName(BlockColor blockColor);
 	string GetDirName(Dir dir);
 	string BlockDescription(Block block);
-
+	void DrawPoints();
 	SDL_Texture* bg;
 	Block* selectedBlock;
 	Block* nextBlock;
+	int points = 0;
 private:
+	SDL_Renderer* renderer;
+	SDL_Texture* textures[5];
+	SDL_Texture* texture_score;
+	SDL_Texture* texture_grid;
+	SDL_Texture* texture_hiddenLeafGrid;
+	SDL_Texture* texture_gameLogo;
 	Block grid[8][8];
 	float DeltaTime;
-	SDL_Renderer* renderer;
 	float tweekTimer;
 	float matchTimer;
 	float readyTimer;
 	bool interactive = true;
-	SDL_Texture* textures[5];
+	TTF_Font* Sans;
+	
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 600;
 	const int TILE_SIZE = 50;
@@ -60,6 +73,7 @@ private:
 	const int ROWS = 8;
 	const int COLUMNS = 8;
 	const int BOARD_LEFT_PADDING = 200;
-	const int BOARD_UP_PADDING = 100;
+	const int BOARD_UP_PADDING = 140;
+	
 
 };
