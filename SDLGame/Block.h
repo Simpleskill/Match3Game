@@ -17,7 +17,6 @@ enum class BlockState
 	Moving,
 	Moved,
 	Falling,
-	Disappearing,
 	Dead
 };
 enum class BlockMarkerState

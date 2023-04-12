@@ -1,20 +1,16 @@
 ﻿  Board.cpp
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(142,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(278,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(279,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(326,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(447,46): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(459,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(472,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(484,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(604,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(609,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(614,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(619,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Game.cpp
-C:\PersonalProjects\Match3Game\SDLGame\Game.cpp(106,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  main.cpp
-  Generating Code...
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(852): warning C4715: 'Board::GetColorName': not all control paths return a value
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(873): warning C4715: 'Board::GetDirName': not all control paths return a value
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(151,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(287,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(288,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(335,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(457,46): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(469,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(482,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(494,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(614,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(619,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(624,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(629,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(874): warning C4715: 'Board::GetColorName': not all control paths return a value
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(895): warning C4715: 'Board::GetDirName': not all control paths return a value
   SDLGame.vcxproj -> C:\PersonalProjects\Match3Game\x64\Debug\SDLGame.exe

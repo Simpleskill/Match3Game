@@ -29,11 +29,23 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			std::cout << "Renderer created" << std::endl;
 		}
 		isRunning = true;
-		board.Init(renderer);
 
 	} else {
 		isRunning = false;
+		return;
 	}
+	// Music & sounds Initialization
+	soundHandler.InitMixer();
+	soundHandler.SetMusicVolume(5);
+	soundHandler.SetSoundVolume(30);
+	soundHandler.gameMusic = soundHandler.LoadMusic("../Assets/gameMusic.wav");
+	soundHandler.clickSound = soundHandler.LoadSound("../Assets/clickSound.wav");
+	soundHandler.comboSound = soundHandler.LoadSound("../Assets/comboSound.wav");
+	soundHandler.failSwapSound = soundHandler.LoadSound("../Assets/failSwapSound.wav");
+
+	// Initialize board
+	board.Init(renderer,&soundHandler);
+
 }
 
 void Game::handleEvents()
@@ -61,6 +73,7 @@ void Game::handleEvents()
 				return;
 			}
 			// Handle the block click 
+			soundHandler.PlaySound(soundHandler.clickSound);
 			board.CheckMouseClick(mousePosition);
 
 			// Start dragging the block
@@ -105,7 +118,15 @@ void Game::update()
 	// Game logic update
 	board.UpdateBoard(deltaTime);
 
+	MusicHandler();
 }
+
+
+void Game::MusicHandler()
+{
+	soundHandler.PlayMusic(soundHandler.gameMusic);
+}
+
 
 void Game::render()
 {

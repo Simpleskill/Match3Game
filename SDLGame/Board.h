@@ -1,5 +1,6 @@
 #pragma once
 #include "Block.h"
+#include "Music.h"
 #include "SDL.h"
 #include "SDL_image.h"
 #include <SDL_ttf.h>
@@ -14,7 +15,7 @@ using std::string;
 class Board {
 
 public:
-	void Init(SDL_Renderer* myRenderer);
+	void Init(SDL_Renderer* myRenderer, Music* soundHandler);
 	SDL_Texture* loadTexture(const std::string& path);
 	bool loadFromRenderedText(std::string textureText, SDL_Color textColor);
 	void FirstInit();
@@ -40,7 +41,7 @@ public:
 	void SwapMovement();
 	void SetBlockOriginPos(Block* block);
 	void UpdateBlockOnDrag(SDL_Point mousePosition);
-	bool CheckMatchPoint();
+	bool CheckMatchPoint(bool shouldPredict);
 	void CheckInteractive();
 	void SetMatchPoint();
 	string GetColorName(BlockColor blockColor);
@@ -74,6 +75,6 @@ private:
 	const int COLUMNS = 8;
 	const int BOARD_LEFT_PADDING = 200;
 	const int BOARD_UP_PADDING = 140;
-	
+	Music* SoundHandler;
 
 };

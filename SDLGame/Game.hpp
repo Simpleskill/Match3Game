@@ -3,7 +3,9 @@
 #include <iostream>
 #include "Board.h"
 #include "Block.h"
-#include <chrono>   
+#include <chrono>
+#include <SDL_mixer.h>
+#include "Music.h"
 
 #define TimeSpanType std::chrono::steady_clock::time_point
 
@@ -22,6 +24,8 @@ public:
 	bool running() { return isRunning; };
 	TimeSpanType _lastTimeStamp;
 
+	void MusicHandler();
+
 private:
 	int cnt = 0;
 	bool isRunning;
@@ -29,4 +33,5 @@ private:
 	SDL_Renderer* renderer;
 	Board board;
 	bool leftMouseButtonDown = false;
+	Music soundHandler;
 };

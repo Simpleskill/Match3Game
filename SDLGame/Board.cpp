@@ -28,7 +28,7 @@ SDL_Texture* Board::loadTexture(const std::string& path)
     return newTexture;
 }
 
-void Board::Init(SDL_Renderer* myRenderer) {
+void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) {
 
     //Initialize SDL_TTF
     TTF_Init();
@@ -50,6 +50,9 @@ void Board::Init(SDL_Renderer* myRenderer) {
     bg = loadTexture("../Assets/Backdrop13.jpg");
     // Initialization of Grid
     FirstInit();
+
+    // Sound handler
+    SoundHandler = soundHandler;
 }
 void Board::UpdateBoard(float deltaTime) {
     // Storing the delta time every frame to handle animations and delays
@@ -120,6 +123,12 @@ void Board::DrawBoard() {
 void Board::CheckInteractive() {
     // Whenever the board is changed, it forces a half second cooldown before going back to being interactive
     if (!IsBoardReady()) 
+    {
+        interactive = false;
+        readyTimer = 0;
+        return;
+    }
+    if (CheckMatchPoint(false))
     {
         interactive = false;
         readyTimer = 0;
@@ -389,10 +398,11 @@ bool Board::IsBoardFalling()
 
 void Board::StartSwapping() 
 {
-
     // Checks if any match point will be made with this exchange, if not, the exchange is canceled, otherwise it continues
-    if (!CheckMatchPoint()) 
+    if (!CheckMatchPoint(true)) 
     {
+
+        SoundHandler->PlaySound(SoundHandler->failSwapSound);
         UnmarkBlock();
         return;
     }
@@ -693,9 +703,9 @@ void Board::SetBlockOriginPos(Block* block)
     block->rect.h = TILE_SIZE;
 }
 
-bool Board::CheckMatchPoint()
+bool Board::CheckMatchPoint(bool shouldPredict)
 {
-    // Another temporary auxiliary board is created with the data of the main board but with the future exchange of blocks
+    // Another temporary auxiliary board is created with the data of the main board but with the future exchange of blocks in case parameter is true
     // Returns true if there is a match, and false otherwise.
     Block auxGrid[8][8];
 
@@ -707,11 +717,12 @@ bool Board::CheckMatchPoint()
         }
 
     }
-
-    std::swap(auxGrid[selectedBlock->x][selectedBlock->y].x, auxGrid[nextBlock->x][nextBlock->y].x);
-    std::swap(auxGrid[selectedBlock->x][selectedBlock->y].y, auxGrid[nextBlock->x][nextBlock->y].y);
-    std::swap(auxGrid[selectedBlock->x][selectedBlock->y], auxGrid[nextBlock->x][nextBlock->y]);
-
+    if(shouldPredict)
+    {
+        std::swap(auxGrid[selectedBlock->x][selectedBlock->y].x, auxGrid[nextBlock->x][nextBlock->y].x);
+        std::swap(auxGrid[selectedBlock->x][selectedBlock->y].y, auxGrid[nextBlock->x][nextBlock->y].y);
+        std::swap(auxGrid[selectedBlock->x][selectedBlock->y], auxGrid[nextBlock->x][nextBlock->y]);
+    }
 
     for (int y = 0; y < 8; y++)
     {
@@ -736,6 +747,10 @@ bool Board::CheckMatchPoint()
 }
 
 void Board::SetMatchPoint() {
+
+    if (!CheckMatchPoint(false))
+        return;
+
     // Check if there are any matches on the entire board
     // Changes block state to dead in all match sequences
     // 0.6 second interval for scores
@@ -744,6 +759,7 @@ void Board::SetMatchPoint() {
         matchTimer = 0;
     }
     else {
+        //std::cout << std::to_string(matchTimer)+ "\n";
         return;
     }
 
@@ -756,10 +772,13 @@ void Board::SetMatchPoint() {
             }
             if (count >= 3) {
                 // Set blocks to dead to disappear
+                SoundHandler->PlaySound(SoundHandler->comboSound);
                 for (int i = 0; i < count; ++i) {
                     grid[y][x + i].blockState = BlockState::Dead;
                     points++;
                 }
+                matchTimer = 0;
+                SetMatchPoint();
             }
 
             // Check vertical lines
@@ -768,11 +787,14 @@ void Board::SetMatchPoint() {
                 ++count;
             }
             if (count >= 3) {
+                SoundHandler->PlaySound(SoundHandler->comboSound);
                 // Set blocks to dead to disappear
                 for (int i = 0; i < count; ++i) {
                     grid[y+i][x].blockState = BlockState::Dead;
                     points++;
                 }
+                matchTimer = 0;
+                SetMatchPoint();
             }
         }
     }
