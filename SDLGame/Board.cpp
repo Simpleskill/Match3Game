@@ -32,22 +32,31 @@ void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) {
 
     //Initialize SDL_TTF
     TTF_Init();
+    
     // Opens a font style and sets a size
     Sans = TTF_OpenFont("../Assets/Sans.ttf", 40);
 
-    // Initialization of Textures
+    // Set app renderer
     renderer = myRenderer;
+
+    // Initialization of Textures
     textures[0] = loadTexture("../Assets/Color-1.png");
     textures[1] = loadTexture("../Assets/Color-2.png");
     textures[2] = loadTexture("../Assets/Color-3.png");
     textures[3] = loadTexture("../Assets/Color-4.png");
     textures[4] = loadTexture("../Assets/Color-5.png");
+
+    // Ui Textures
+    texture_soundOn = loadTexture("../Assets/SoundOn.png");
+    texture_soundOff = loadTexture("../Assets/SoundOff.png");
+    texture_musicOn = loadTexture("../Assets/MusicOn.png");
+    texture_musicOff = loadTexture("../Assets/MusicOff.png");
     texture_score = loadTexture("../Assets/WoodBoardScore.png");
     texture_grid = loadTexture("../Assets/WoodBoardGrid2.png");
     texture_hiddenLeafGrid = loadTexture("../Assets/HiddenLeafBoardGrid.png");
     texture_gameLogo = loadTexture("../Assets/GameLogoJewelCrush.png");
-
     bg = loadTexture("../Assets/Backdrop13.jpg");
+
     // Initialization of Grid
     FirstInit();
 
@@ -60,6 +69,10 @@ void Board::UpdateBoard(float deltaTime) {
     
     // Draw Background
     DrawBackground();
+
+    // Sound & Music handle
+    DrawSoundUi();
+    DrawMusicUi();
 
     // Draw Background
     DrawGameLogo();
@@ -103,6 +116,27 @@ void Board::UpdateBoard(float deltaTime) {
 
     // Draw Leaf Detail
     DrawHiddenLeafGridBackground();
+}
+
+
+void Board::DrawSoundUi() 
+{
+    // Draw sound Ui
+    rectSound = { 90, 35, 50, 50 };
+    if(SoundHandler->soundVolume>0)
+        SDL_RenderCopy(renderer, texture_soundOn, NULL, &rectSound);
+    else
+        SDL_RenderCopy(renderer, texture_soundOff, NULL, &rectSound);
+}
+
+void Board::DrawMusicUi()
+{
+    // Draw music Ui
+    rectMusic = { 150, 35, 50, 50 };
+    if (!SoundHandler->IsMusicStoped())
+        SDL_RenderCopy(renderer, texture_musicOn, NULL, &rectMusic);
+    else
+        SDL_RenderCopy(renderer, texture_musicOff, NULL, &rectMusic);
 }
 
 void Board::DrawBoard() {
@@ -800,6 +834,20 @@ void Board::SetMatchPoint() {
     }
 }
 
+void Board::CheckMouseClickUi(SDL_Point mousePosition)
+{
+    if (SDL_PointInRect(&mousePosition, &rectMusic))
+    {
+        SoundHandler->TogglePlayMusic();
+        return;
+    }
+    if (SDL_PointInRect(&mousePosition, &rectSound))
+    {
+        SoundHandler->TogglePlaySounds();
+        return;
+    }
+}
+
 void Board::CheckMouseClick(SDL_Point mousePosition) 
 {
     // Check if it is interactive, only proceed if it is true
@@ -807,7 +855,7 @@ void Board::CheckMouseClick(SDL_Point mousePosition)
     {
         return;
     }
-        
+
     for (int y = 0; y < 8; y++)
     {
         for (int x = 0; x < 8; x++)

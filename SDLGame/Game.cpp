@@ -37,7 +37,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	// Music & sounds Initialization
 	soundHandler.InitMixer();
 	soundHandler.SetMusicVolume(5);
-	soundHandler.SetSoundVolume(30);
+	soundHandler.SetSoundVolume(20);
 	soundHandler.gameMusic = soundHandler.LoadMusic("../Assets/gameMusic.wav");
 	soundHandler.clickSound = soundHandler.LoadSound("../Assets/clickSound.wav");
 	soundHandler.comboSound = soundHandler.LoadSound("../Assets/comboSound.wav");
@@ -65,6 +65,7 @@ void Game::handleEvents()
 			// If the click is outside the board then it deselects the selected block if it exists
 			if (board.CheckBlockHover(mousePosition) == nullptr) 
 			{
+				board.CheckMouseClickUi(mousePosition);
 				board.UnmarkBlock();
 
 				// Prevents it from being possible to drag 

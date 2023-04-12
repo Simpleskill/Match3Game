@@ -20,7 +20,9 @@ public:
 	int PlaySound(int s);
 	int InitMixer();
 	void QuitMixer();
-	void TogglePlay();
+	void TogglePlayMusic();
+	void TogglePlaySounds();
+	bool IsMusicStoped();
 
 	std::vector<Mix_Chunk*> sounds;
 	std::vector<Mix_Music*> music;
@@ -29,10 +31,9 @@ public:
 	int clickSound;
 	int comboSound;
 	int failSwapSound;
-
-private:
 	int volume;
 	int musicVolume;
 	int soundVolume;
+
 	
 };

@@ -97,7 +97,16 @@ void Music::QuitMixer()
 	Mix_Quit();
 }
 
-void Music::TogglePlay()
+bool Music::IsMusicStoped()
+{
+	if (Mix_PausedMusic() == 1)
+	{
+		return true;
+	}
+	return false;
+}
+
+void Music::TogglePlayMusic()
 {
 	// Pause or resume music
 	if (Mix_PausedMusic() == 1)
@@ -107,4 +116,13 @@ void Music::TogglePlay()
 	else {
 		Mix_PauseMusic();
 	}
+}
+
+void Music::TogglePlaySounds()
+{
+	// Toggle sound volume
+	if (soundVolume > 0)
+		SetSoundVolume(0);
+	else
+		SetSoundVolume(20);
 }

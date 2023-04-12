@@ -44,6 +44,9 @@ public:
 	bool CheckMatchPoint(bool shouldPredict);
 	void CheckInteractive();
 	void SetMatchPoint();
+	void DrawSoundUi();
+	void DrawMusicUi();
+	void CheckMouseClickUi(SDL_Point mousePosition);
 	string GetColorName(BlockColor blockColor);
 	string GetDirName(Dir dir);
 	string BlockDescription(Block block);
@@ -52,6 +55,8 @@ public:
 	Block* selectedBlock;
 	Block* nextBlock;
 	int points = 0;
+	SDL_Rect rectSound;
+	SDL_Rect rectMusic;
 private:
 	SDL_Renderer* renderer;
 	SDL_Texture* textures[5];
@@ -59,6 +64,10 @@ private:
 	SDL_Texture* texture_grid;
 	SDL_Texture* texture_hiddenLeafGrid;
 	SDL_Texture* texture_gameLogo;
+	SDL_Texture* texture_soundOn;
+	SDL_Texture* texture_soundOff;
+	SDL_Texture* texture_musicOn;
+	SDL_Texture* texture_musicOff;
 	Block grid[8][8];
 	float DeltaTime;
 	float tweekTimer;

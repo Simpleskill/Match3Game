@@ -1,16 +1,22 @@
 ﻿  Board.cpp
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(151,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(287,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(288,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(335,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(457,46): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(469,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(482,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(494,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(614,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(619,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(624,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(629,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(874): warning C4715: 'Board::GetColorName': not all control paths return a value
-C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(895): warning C4715: 'Board::GetDirName': not all control paths return a value
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(185,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(321,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(322,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(369,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(491,46): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(503,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(516,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(528,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(648,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(653,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(658,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(663,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Game.cpp(120,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Music.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Music.cpp(20,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Music.cpp(34,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(922): warning C4715: 'Board::GetColorName': not all control paths return a value
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(943): warning C4715: 'Board::GetDirName': not all control paths return a value
   SDLGame.vcxproj -> C:\PersonalProjects\Match3Game\x64\Debug\SDLGame.exe
