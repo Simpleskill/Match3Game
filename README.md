@@ -36,11 +36,11 @@ Jewel Crush was created using the following libraries:
 ## Screenshots
 Here are some screenshots of Jewel Crush in action:
 
-![Alt text](/Screenshots/Screenshot_3.jpg?raw=true "Screenshot1")
+![Screenshot1](/Screenshots/Screenshot_3.png?raw=true "Screenshot1")
 
-![Alt text](/Screenshots/Screenshot_4.jpg?raw=true "Screenshot2")
+![Screenshot2](/Screenshots/Screenshot_4.png?raw=true "Screenshot2")
 
-![Alt text](/Screenshots/GameLogoJewelCrush.jpg?raw=true "GameLogo")
+![GameLogo](/Screenshots/GameLogoJewelCrush.png?raw=true "GameLogo")
 
 ## Contributing
 If you'd like to contribute to Jewel Crush, please fork the repository and create a new branch for your changes. Once you've made your changes, submit a pull request and we'll review your changes.
