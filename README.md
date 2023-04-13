@@ -6,7 +6,7 @@ When a match is made, the jewels disappear and new jewels fall from the top of t
 There is sound, music and particle effects included.
 
 ## Getting Started
-To **PLAY** Jewel Crush, you'll need to open (**x64>Release>Match3.exe**) or download zip file here: 
+To **PLAY Jewel Crush**, you'll need to open (**x64>Release>Match3.exe**) or download zip file here: 
 
 https://andrefcastro1.itch.io/jewel-crush
 
@@ -44,6 +44,8 @@ Here are some screenshots of Jewel Crush in action:
 
 ## Contributing
 If you'd like to contribute to Jewel Crush, please fork the repository and create a new branch for your changes. Once you've made your changes, submit a pull request and we'll review your changes.
+
+https://github.com/Simpleskill/Match3Game
 
 ## Author
 Jewel Crush was created by **André Castro**.
