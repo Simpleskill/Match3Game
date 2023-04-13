@@ -1,18 +1,46 @@
-# Match3Game
+# Jewel Crush
+Jewel Crush is a Match3 game created using C++ and the SDL2 library. In the game, players must swap adjacent jewels to create a row or column of three or more matching jewels.
 
-Match3 Game | Technical test for **Miniclip**
+When a match is made, the jewels disappear and new jewels fall from the top of the screen to fill the empty space. 
 
-**Language:**
+## Getting Started
+To **PLAY** Jewel Crush, you'll need to open (**x64>Release>Match3.exe**) or download zip file here: 
 
-	- C++
+https://andrefcastro1.itch.io/jewel-crush
 
-**Using:**
+#### **Here are the steps to play the game after download zip:**
+*(Download>Jewel Crush>x64>Release>Match3.exe)*
 
-	- SDL2-2.26.4
-	- SDL2_image-2.6.3
-	- SDL2_ttf-2.20.2
-	- SDL2_mixer-2.6.3
+**Currently the only executable version is for WINDOWS.**
 
-**Date: 03/04/2023 - 12/04/2023**
 
-**Author: André Castro**
+
+#### **Here are the steps to run the project:**
+
+    1. Download SDL2 from the official website: https://www.libsdl.org/download-2.0.php
+    2. Install SDL2 on your computer
+    3. Clone the Jewel Crush repository to your local machine
+    4. Open the project in your favorite IDE (Visual Studio, Code::Blocks, etc.)
+    5. Build and run the project
+
+## Dependencies
+Jewel Crush was created using the following libraries:
+
+    SDL2-2.26.4
+    SDL2_image-2.6.3
+    SDL2_ttf-2.20.2
+    SDL2_mixer-2.6.3
+
+## Screenshots
+Here are some screenshots of Jewel Crush in action:
+
+Screenshot 1
+Screenshot 2
+
+## Contributing
+If you'd like to contribute to Jewel Crush, please fork the repository and create a new branch for your changes. Once you've made your changes, submit a pull request and we'll review your changes.
+
+## Author
+Jewel Crush was created by **André Castro**.
+
+I hope this helps! Let me know if you have any questions or if there's anything else I can help you with.
