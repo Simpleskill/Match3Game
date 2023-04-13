@@ -3,6 +3,8 @@ Jewel Crush is a Match3 game created using C++ and the SDL2 library. In the game
 
 When a match is made, the jewels disappear and new jewels fall from the top of the screen to fill the empty space. 
 
+There is sound, music and particle effects included.
+
 ## Getting Started
 To **PLAY** Jewel Crush, you'll need to open (**x64>Release>Match3.exe**) or download zip file here: 
 
@@ -34,8 +36,11 @@ Jewel Crush was created using the following libraries:
 ## Screenshots
 Here are some screenshots of Jewel Crush in action:
 
-Screenshot 1
-Screenshot 2
+![Alt text](/Screenshots/Screenshot_3.jpg?raw=true "Screenshot1")
+
+![Alt text](/Screenshots/Screenshot_4.jpg?raw=true "Screenshot2")
+
+![Alt text](/Screenshots/GameLogoJewelCrush.jpg?raw=true "GameLogo")
 
 ## Contributing
 If you'd like to contribute to Jewel Crush, please fork the repository and create a new branch for your changes. Once you've made your changes, submit a pull request and we'll review your changes.
