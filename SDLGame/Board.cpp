@@ -1,5 +1,10 @@
 #include "Board.h"
 
+Board::Board() {
+}
+
+Board::~Board() {
+}
 
 SDL_Texture* Board::loadTexture(const std::string& path)
 {
@@ -28,7 +33,8 @@ SDL_Texture* Board::loadTexture(const std::string& path)
     return newTexture;
 }
 
-void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) {
+void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) 
+{
 
     //Initialize SDL_TTF
     TTF_Init();
@@ -40,11 +46,17 @@ void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) {
     renderer = myRenderer;
 
     // Initialization of Textures
-    textures[0] = loadTexture("../Assets/Color-1.png");
-    textures[1] = loadTexture("../Assets/Color-2.png");
-    textures[2] = loadTexture("../Assets/Color-3.png");
-    textures[3] = loadTexture("../Assets/Color-4.png");
-    textures[4] = loadTexture("../Assets/Color-5.png");
+    textures_blocks[0] = loadTexture("../Assets/Color-1.png");
+    textures_blocks[1] = loadTexture("../Assets/Color-2.png");
+    textures_blocks[2] = loadTexture("../Assets/Color-3.png");
+    textures_blocks[3] = loadTexture("../Assets/Color-4.png");
+    textures_blocks[4] = loadTexture("../Assets/Color-5.png");
+    // Initialization of Textures
+    textures_particles[0] = loadTexture("../Assets/Color-1Particle.png");
+    textures_particles[1] = loadTexture("../Assets/Color-2Particle.png");
+    textures_particles[2] = loadTexture("../Assets/Color-3Particle.png");
+    textures_particles[3] = loadTexture("../Assets/Color-4Particle.png");
+    textures_particles[4] = loadTexture("../Assets/Color-5Particle.png");
 
     // Ui Textures
     texture_soundOn = loadTexture("../Assets/SoundOn.png");
@@ -62,8 +74,15 @@ void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler) {
 
     // Sound handler
     SoundHandler = soundHandler;
+    
+
+    //Initialize Particles
+    //texture_particle = loadTexture("../Assets/Color-1.png");
+    //firework = Firework(texture_particle, SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f, 20, 20, SCREEN_WIDTH, SCREEN_HEIGHT, 50, 10);
 }
-void Board::UpdateBoard(float deltaTime) {
+
+void Board::UpdateBoard(float deltaTime) 
+{
     // Storing the delta time every frame to handle animations and delays
     DeltaTime = deltaTime;
     
@@ -116,8 +135,23 @@ void Board::UpdateBoard(float deltaTime) {
 
     // Draw Leaf Detail
     DrawHiddenLeafGridBackground();
+
+    //Draw Particles
+    DrawParticles();
 }
 
+
+void Board::DrawParticles() 
+{
+    for (int i = 0; i < effects.size(); i++)
+    {
+        effects[i].update(DeltaTime);
+        effects[i].draw();
+        if (effects[i].particles.size() == 0) {
+            effects.erase(effects.begin() + i);
+        }
+    }
+}
 
 void Board::DrawSoundUi() 
 {
@@ -148,10 +182,10 @@ void Board::DrawBoard() {
 
         if (selectedBlock == &grid[x][y])
             continue;
-        SDL_RenderCopy(renderer, textures[(int)grid[x][y].blockColor], NULL, &grid[x][y].rect);
+        SDL_RenderCopy(renderer, textures_blocks[(int)grid[x][y].blockColor], NULL, &grid[x][y].rect);
     }
     if(selectedBlock != nullptr)
-        SDL_RenderCopy(renderer, textures[(int)selectedBlock->blockColor], NULL, &selectedBlock->rect);
+        SDL_RenderCopy(renderer, textures_blocks[(int)selectedBlock->blockColor], NULL, &selectedBlock->rect);
 }
 
 void Board::CheckInteractive() {
@@ -700,8 +734,6 @@ void Board::UpdateBlockOnDrag(SDL_Point mousePosition)
 
 void Board::DrawPoints() {
 
-    SDL_Color Black = { 0, 0, 0 };
-    SDL_Color White = { 255, 255, 255 };
 
     string score_text = "score: " + std::to_string(points);
 
@@ -811,6 +843,13 @@ void Board::SetMatchPoint() {
                     grid[y][x + i].blockState = BlockState::Dead;
                     points++;
                 }
+
+                //Effect
+                Effect e = Effect(20, 1.5f, grid[y][x + 1].rect.x, grid[y][x + 1].rect.y, 0, 10, 0, 10, -70, 70, -70, 70);
+                e.init(renderer);
+                e.SetTexture(textures_particles[(int)grid[y][x + 1].blockColor]);
+                effects.push_back(e);
+
                 matchTimer = 0;
                 SetMatchPoint();
             }
@@ -827,6 +866,13 @@ void Board::SetMatchPoint() {
                     grid[y+i][x].blockState = BlockState::Dead;
                     points++;
                 }
+
+                //Effect
+                Effect e = Effect(20, 1.5f, grid[y + 1][x].rect.x, grid[y + 1][x].rect.y, 0, 10, 0, 10, -70, 70, -70, 70);
+                e.init(renderer);
+                e.SetTexture(textures_particles[(int)grid[y + 1][x].blockColor]);
+                effects.push_back(e);
+
                 matchTimer = 0;
                 SetMatchPoint();
             }
@@ -901,7 +947,6 @@ void Board::CheckMouseClick(SDL_Point mousePosition)
 
 string Board::GetColorName(BlockColor blockColor)
 {
-
     switch (blockColor) {
         case BlockColor::Black :
             return "Black";
@@ -919,6 +964,7 @@ string Board::GetColorName(BlockColor blockColor)
             return "Orange";
             break;
     }
+    return "";
 }
 
 string Board::GetDirName(Dir dir)
@@ -940,6 +986,7 @@ string Board::GetDirName(Dir dir)
         return "NONE";
         break;
     }
+    return "";
 }
 
 string Board::BlockDescription(Block block) 

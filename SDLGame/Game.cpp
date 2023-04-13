@@ -46,6 +46,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	// Initialize board
 	board.Init(renderer,&soundHandler);
 
+	_lastTimeStamp = std::chrono::high_resolution_clock::now();
 }
 
 void Game::handleEvents()

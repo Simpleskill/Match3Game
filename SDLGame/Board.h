@@ -9,12 +9,16 @@
 #include <chrono>   
 #include <string>   
 #include <cmath>
+#include "Effect.h"
+
 #define TimeSpanType std::chrono::steady_clock::time_point
 using std::string;
 
 class Board {
 
 public:
+	Board();
+	~Board();
 	void Init(SDL_Renderer* myRenderer, Music* soundHandler);
 	SDL_Texture* loadTexture(const std::string& path);
 	bool loadFromRenderedText(std::string textureText, SDL_Color textColor);
@@ -57,9 +61,14 @@ public:
 	int points = 0;
 	SDL_Rect rectSound;
 	SDL_Rect rectMusic;
+	void DrawParticles();
+	//Firework firework;
+	Effect* effect;
+	std::vector<Effect> effects;
 private:
 	SDL_Renderer* renderer;
-	SDL_Texture* textures[5];
+	SDL_Texture* textures_blocks[5];
+	SDL_Texture* textures_particles[5];
 	SDL_Texture* texture_score;
 	SDL_Texture* texture_grid;
 	SDL_Texture* texture_hiddenLeafGrid;
@@ -68,6 +77,7 @@ private:
 	SDL_Texture* texture_soundOff;
 	SDL_Texture* texture_musicOn;
 	SDL_Texture* texture_musicOff;
+
 	Block grid[8][8];
 	float DeltaTime;
 	float tweekTimer;
@@ -75,7 +85,9 @@ private:
 	float readyTimer;
 	bool interactive = true;
 	TTF_Font* Sans;
-	
+
+	SDL_Color Black = { 0, 0, 0 };
+	SDL_Color White = { 255, 255, 255 };
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 600;
 	const int TILE_SIZE = 50;

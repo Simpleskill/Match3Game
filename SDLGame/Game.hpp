@@ -8,8 +8,6 @@
 #include "Music.h"
 
 #define TimeSpanType std::chrono::steady_clock::time_point
-
-
 class Game {
 public:
 	Game();
