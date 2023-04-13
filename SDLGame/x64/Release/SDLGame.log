@@ -1,0 +1,41 @@
+﻿  Board.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(214,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(350,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(351,43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(398,55): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(520,46): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(532,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(545,47): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(557,47): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(677,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(682,89): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(687,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(692,87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(843,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(843,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(866,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Board.cpp(866,64): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Effect.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(20,12): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(20,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(21,12): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(21,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(23,18): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(23,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(24,8): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(24,8): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(29,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(30,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(49,48): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Effect.cpp(83,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Game.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Game.cpp(121,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+  Music.cpp
+C:\PersonalProjects\Match3Game\SDLGame\Music.cpp(20,25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\PersonalProjects\Match3Game\SDLGame\Music.cpp(34,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+SDL2_image.lib(SDL2_image.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
+SDL2_ttf.lib(SDL2_ttf.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
+SDL2_mixer.lib(SDL2_mixer.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
+  SDLGame.vcxproj -> C:\PersonalProjects\Match3Game\x64\Release\SDLGame_R.lib
