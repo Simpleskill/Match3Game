@@ -74,11 +74,6 @@ void Board::Init(SDL_Renderer* myRenderer, Music* soundHandler)
 
     // Sound handler
     SoundHandler = soundHandler;
-    
-
-    //Initialize Particles
-    //texture_particle = loadTexture("../Assets/Color-1.png");
-    //firework = Firework(texture_particle, SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f, 20, 20, SCREEN_WIDTH, SCREEN_HEIGHT, 50, 10);
 }
 
 void Board::UpdateBoard(float deltaTime) 

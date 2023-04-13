@@ -62,8 +62,6 @@ public:
 	SDL_Rect rectSound;
 	SDL_Rect rectMusic;
 	void DrawParticles();
-	//Firework firework;
-	Effect* effect;
 	std::vector<Effect> effects;
 private:
 	SDL_Renderer* renderer;
